@@ -22,7 +22,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px}
-body{font-family:'Montserrat',sans-serif;background:var(--cream);overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 img{display:block;max-width:100%}
 
 /* ========================================================
@@ -784,11 +784,13 @@ gsap.set('.step-2, .step-3, .step-4, .step-5', { autoAlpha: 0, scale: .96 });
 gsap.set('#logoScene', { perspective: 1600, perspectiveOrigin: '50% 30%' });
 gsap.set('#logo3d', { transformStyle: 'preserve-3d', rotateY: 0, rotateX: 0, scale: 1, y: 0 });
 
+const isMobile = window.innerWidth <= 750;
+
 const ST = {
   trigger : '.scroll-container',
   start   : 'top top',
   end     : 'bottom bottom',
-  scrub   : 0.6,
+  scrub   : isMobile ? true : 0.6,
 };
 
 /* ── 1. Logo 3-D rotation ────────────────────── */
@@ -799,7 +801,7 @@ gsap.to('#logo3d', {
 
 /* ── 2. Logo scale: big → compact header ──────── */
 gsap.timeline({
-  scrollTrigger: { trigger: '.scroll-container', start: 'top top', end: '22% top', scrub: 0.8 }
+  scrollTrigger: { trigger: '.scroll-container', start: 'top top', end: '22% top', scrub: isMobile ? true : 0.8 }
 }).to('#logo3d', { scale: .22, y: -190, ease: 'power2.inOut' });
 
 ScrollTrigger.create({
@@ -835,9 +837,8 @@ tl
   .fromTo('.step-5', { autoAlpha: 0, scale: .95 }, { autoAlpha: 1, scale: 1, duration: .35, ease: 'power2.out' }, '<.04')
   .to({}, { duration: 0.6 });
 
-/* ── 4. Logo visibility: hide after section 1 ── */
 gsap.timeline({
-  scrollTrigger: { trigger: '.scroll-container', start: '15% top', end: '22% top', scrub: 0.8 }
+  scrollTrigger: { trigger: '.scroll-container', start: '15% top', end: '22% top', scrub: isMobile ? true : 0.8 }
 }).to('#logo3d', { autoAlpha: 0, duration: .2 });
 
 /* ── 5. Parallax on images ───────────────────── */
