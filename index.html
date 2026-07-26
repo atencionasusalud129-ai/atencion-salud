@@ -29,7 +29,7 @@ img{display:block;max-width:100%}
    SCROLL SHELL
 ======================================================== */
 .scroll-container{height:320vh;position:relative}
-.sticky-vp{position:sticky;top:0;height:100vh;overflow:hidden}
+.sticky-vp{position:sticky;top:0;height:100dvh;overflow:hidden}
 
 /* ========================================================
    3-D LOGO SCENE
@@ -413,10 +413,13 @@ img{display:block;max-width:100%}
    RESPONSIVE
 ======================================================== */
 @media(max-width:750px){
+  .scroll-container{height:500vh}
+  .step{overflow-y:auto;padding-bottom:100px;align-items:flex-start}
   .step-2,.step-3,.step-4{grid-template-columns:1fr}
-  .s2-right,.s3-img-col,.s4-right{display:none}
-  .s2-left,.s3-text-col,.s4-left{padding-top:6rem}
-  .new-s5-layout{flex-direction:column;gap:1.5rem;padding:0 1rem}
+  .s2-right,.s4-right{display:flex;flex-direction:column;align-items:center;margin-top:2rem}
+  .s3-img-col{display:none}
+  .s2-left,.s3-text-col,.s4-left{padding-top:5rem}
+  .new-s5-layout{flex-direction:column;gap:1.5rem;padding:0 1rem;margin-top:2rem}
   .live-btn{bottom:1.5rem;left:1.5rem;padding:0.6rem 1.2rem;font-size:0.75rem;}
 }
 @media(prefers-reduced-motion:reduce){
