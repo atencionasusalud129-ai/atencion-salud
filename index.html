@@ -22,7 +22,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px}
-body{font-family:'Montserrat',sans-serif;background:var(--cream);overflow-x:hidden}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;}
 img{display:block;max-width:100%}
 
 /* ========================================================
@@ -416,8 +416,14 @@ img{display:block;max-width:100%}
   /* Disable scroll-pinning on mobile, use native vertical stack */
   .scroll-container{height:auto !important; padding-bottom: 3rem;}
   .sticky-vp{position:relative !important; height:auto !important; overflow:visible !important;}
-  .step{position:relative !important; height:auto !important; min-height:100dvh; opacity:1 !important; visibility:visible !important; transform:none !important; padding:4rem 0;}
-  .logo-scene{position:relative !important; padding-top:5rem; padding-bottom:1rem; perspective:none; z-index:10;}
+  .step{position:relative !important; height:auto !important; min-height:100dvh; opacity:1 !important; visibility:visible !important; transform:none !important; padding:0;}
+  
+  /* Hero section: flex column, logo on top, text below — tightly stacked */
+  .step-1{display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:4rem; padding-bottom:2rem;}
+  .logo-scene{position:relative !important; padding-top:1.5rem; padding-bottom:0; perspective:none; z-index:10;}
+  .logo-svg-wrap{width:clamp(140px,45vw,200px); height:clamp(140px,45vw,200px);}
+  .s1-content{margin-top:0.5rem; padding:0 1.5rem;}
+  .s1-tagline{margin-bottom:1rem;}
   .b-arrow{display:none !important;} /* hide arrows in native scroll mode */
   
   .step-2,.step-3,.step-4{grid-template-columns:1fr}
