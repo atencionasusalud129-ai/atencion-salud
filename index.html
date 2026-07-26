@@ -413,12 +413,18 @@ img{display:block;max-width:100%}
    RESPONSIVE
 ======================================================== */
 @media(max-width:750px){
-  .scroll-container{height:400vh}
+  /* Disable scroll-pinning on mobile, use native vertical stack */
+  .scroll-container{height:auto !important; padding-bottom: 3rem;}
+  .sticky-vp{position:relative !important; height:auto !important; overflow:visible !important;}
+  .step{position:relative !important; height:auto !important; min-height:100dvh; opacity:1 !important; visibility:visible !important; transform:none !important; padding:4rem 0;}
+  .logo-scene{position:relative !important; padding-top:5rem; padding-bottom:1rem; perspective:none; z-index:10;}
+  .b-arrow{display:none !important;} /* hide arrows in native scroll mode */
+  
   .step-2,.step-3,.step-4{grid-template-columns:1fr}
   .s2-right,.s4-right{display:flex;flex-direction:column;align-items:center;margin-top:1rem}
-  .s2-right img, .s4-right img { max-height: 180px; width: auto; border-radius: 12px; object-fit: contain; }
+  .s2-right img, .s4-right img { max-height: 250px; width: auto; border-radius: 12px; object-fit: contain; }
   .s3-img-col{display:none}
-  .s2-left,.s3-text-col,.s4-left{padding-top:2.5rem}
+  .s2-left,.s3-text-col,.s4-left{padding-top:1rem}
   
   /* Compact inner text blocks to prevent overlap */
   .s2-icons { margin-top: 1rem; gap: 0.5rem; justify-content: center; }
