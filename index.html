@@ -462,10 +462,28 @@ img{display:block;max-width:100%}
   .s1-headline { font-size: 3rem !important; }
   
   /* Compact step-5 to fit in viewport without internal scrolling */
-  .new-s5-layout{flex-direction:column;gap:1.5rem;padding:0 1rem;margin-top:1rem; width:100%; box-sizing:border-box;}
-  .s5-info-card, .s5-contact-card { padding: 1.8rem; width:100% !important; min-width:0 !important; max-width:100% !important; text-align: center; box-sizing:border-box; }
+  .new-s5-layout{
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding: 0 1.2rem !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .s5-info-card, .s5-contact-card { 
+    padding: 2rem 1.5rem !important; 
+    width: 100% !important; 
+    min-width: 0 !important; 
+    max-width: 100% !important; 
+    text-align: center !important; 
+    box-sizing: border-box !important; 
+    margin: 0 auto !important;
+  }
   .s5-info-card h3 { font-size: 1.6rem; margin-bottom: 0.8rem; }
-  .info-row { flex-direction: column; align-items: center; gap: 0.3rem; }
+  .info-row { flex-direction: column !important; align-items: center !important; gap: 0.5rem !important; text-align: center !important; }
+  .info-row div { text-align: center !important; }
   .s5-info-card hr { margin: 1rem 0; }
   .wa-direct-btn { padding: 0.9rem 1.8rem; font-size: 0.95rem; }
   .qr-container { padding: 8px; margin-bottom: 0.3rem; }
