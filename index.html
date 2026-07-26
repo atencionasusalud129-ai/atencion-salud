@@ -809,12 +809,13 @@ new Swiper('.mySwiper', {
   pagination: { el: '.swiper-pagination', clickable: true },
 });
 
-/* ── Initial states & GSAP logic split ───────────────── */
-const isMobile = window.innerWidth <= 750;
+/* ── GSAP matchMedia for Responsive Animations ───────────────── */
+let mm = gsap.matchMedia();
 
-if (isMobile) {
-  // Mobile: Force all steps to be visible in a standard scroll layout
-  gsap.set('.step', { autoAlpha: 1, scale: 1 });
+mm.add("(max-width: 750px)", () => {
+  // Mobile: Force native scroll layout, clean up any inline styles
+  gsap.set('.step', { autoAlpha: 1, scale: 1, clearProps: "transform,opacity,visibility" });
+  gsap.set('#logo3d', { scale: 1, y: 0, autoAlpha: 1, rotateY: 0, rotateX: 0, clearProps: "all" });
   
   // Hide top social bar when entering the last section (step-5)
   ScrollTrigger.create({
@@ -823,14 +824,16 @@ if (isMobile) {
     onEnter: () => document.querySelector('.top-social-bar').classList.add('hidden-bar'),
     onLeaveBack: () => document.querySelector('.top-social-bar').classList.remove('hidden-bar')
   });
-} else {
+});
+
+mm.add("(min-width: 751px)", () => {
   /* ── Initial states ────────────────────────────── */
   gsap.set('.step-1', { autoAlpha: 1, scale: 1 });
   gsap.set('.step-2, .step-3, .step-4, .step-5', { autoAlpha: 0, scale: .96 });
 
   /* ── Perspective for 3-D logo ─────────────────── */
   gsap.set('#logoScene', { perspective: 1600, perspectiveOrigin: '50% 30%' });
-  gsap.set('#logo3d', { transformStyle: 'preserve-3d', rotateY: 0, rotateX: 0, scale: 1, y: 0 });
+  gsap.set('#logo3d', { transformStyle: 'preserve-3d', rotateY: 0, rotateX: 0, scale: 1, y: 0, autoAlpha: 1 });
 
   const ST = {
     trigger : '.scroll-container',
@@ -912,7 +915,7 @@ if (isMobile) {
     onEnter: () => document.querySelector('.top-social-bar').classList.add('hidden-bar'),
     onLeaveBack: () => document.querySelector('.top-social-bar').classList.remove('hidden-bar')
   });
-}
+});
 
 
 console.log(
