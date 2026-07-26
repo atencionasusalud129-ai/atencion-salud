@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmisión En Vivo | Atención a su Salud</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0; font-family: 'Montserrat', sans-serif;
+    background: #0B1A0E; color: #FDFBF7;
+    display: flex; flex-direction: column; min-height: 100vh;
+  }
+  .header {
+    padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(11,26,14,0.8); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100;
+  }
+  .logo-box { display: flex; align-items: center; gap: 1rem; }
+  .logo-box img { width: 50px; height: 50px; border-radius: 50%; object-fit: contain; background: #fff; }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; color: #A6C4B0; margin-top: 5px; }
+  .back-link {
+    color: #FDFBF7; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+    display: flex; align-items: center; gap: 0.5rem; opacity: 0.8; transition: opacity 0.3s;
+  }
+  .back-link:hover { opacity: 1; }
+  
+  .stream-container {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .video-wrapper {
+    width: 100%; max-width: 960px; aspect-ratio: 16/9;
+    background: #000; border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6); position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .video-bg {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.5;
+  }
+  
+  /* Live Badge */
+  .live-badge {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    background: rgba(230,40,40,0.9); padding: 0.4rem 1rem; border-radius: 50px;
+    font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em;
+    display: flex; align-items: center; gap: 0.6rem; color: #fff;
+    backdrop-filter: blur(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .live-dot {
+    width: 8px; height: 8px; background: #fff; border-radius: 50%;
+    animation: blink 1.5s infinite;
+  }
+  
+  /* Viewers count */
+  .viewers-badge {
+    position: absolute; top: 1.5rem; left: 8rem;
+    background: rgba(0,0,0,0.6); padding: 0.4rem 1rem; border-radius: 50px;
+    font-weight: 600; font-size: 0.8rem; color: #fff;
+    backdrop-filter: blur(5px); display: flex; align-items: center; gap: 0.4rem;
+  }
+  
+  /* Play icon placeholder */
+  .play-icon {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 80px; height: 80px; background: rgba(230,40,40,0.8); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 10px 30px rgba(230,40,40,0.4); transition: transform 0.3s;
+  }
+  .play-icon:hover { transform: translate(-50%,-50%) scale(1.1); background: rgba(230,40,40,1); }
+  .play-icon svg { width: 36px; height: 36px; fill: #fff; margin-left: 6px; }
+  
+  .stream-title { margin-top: 3rem; text-align: center; max-width: 800px; }
+  .stream-title h1 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; margin: 0; color: #A6C4B0;
+    letter-spacing: 0.03em;
+  }
+  .stream-title p {
+    margin-top: 1rem; font-size: 1.15rem; opacity: 0.8; line-height: 1.6;
+  }
+  
+  @keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: 0.3 } }
+  
+  @media(max-width: 768px){
+    .header { padding: 1rem; }
+    .logo-text { display: none; }
+    .stream-title h1 { font-size: 2.5rem; }
+    .stream-container { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+  
+  <header class="header">
+    <div class="logo-box">
+      <img src="img/logo-nuevo.png" alt="Atención a su Salud">
+      <div class="logo-text">ATENCIÓN A SU SALUD</div>
+    </div>
+    <a href="index-pro.html" class="back-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Volver al inicio
+    </a>
+  </header>
+  
+  <main class="stream-container">
+    <div class="video-wrapper">
+      <!-- Background placeholder (can be replaced by an iframe/video tag) -->
+      <img src="img/envivo-bg.jpg" class="video-bg" alt="Video Placeholder">
+      
+      <!-- Tags -->
+      <div class="live-badge">
+        <div class="live-dot"></div> EN VIVO
+      </div>
+      <div class="viewers-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        248 espectadores
+      </div>
+      
+      <!-- Play Button Overlay -->
+      <div class="play-icon">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+    
+    <div class="stream-title">
+      <h1>SESIÓN EN DIRECTO</h1>
+      <p>Acompáñanos en la charla sobre bienestar integral, técnicas de acupuntura y medicina natural para alcanzar el equilibrio físico y mental.</p>
+    </div>
+  </main>
+
+</body>
+</html>
